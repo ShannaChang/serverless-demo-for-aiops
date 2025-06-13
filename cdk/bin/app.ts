@@ -10,7 +10,7 @@ const app = new cdk.App();
 const config = getConfig();
 
 // Create the stack with configuration
-new CdkSampleAppStack(app, 'CdkSampleAppStack', {
+new CdkSampleAppStack(app, config.stackName, {
   config,
   env: { 
     account: process.env.CDK_DEFAULT_ACCOUNT, 
