@@ -61,4 +61,5 @@ cdk.context.json
 !bin/*.js
 
 # Exclude JavaScript files in Lambda handlers
+!lambda/**/*.js
 !src/**/*.js
