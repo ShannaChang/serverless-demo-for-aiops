@@ -52,7 +52,7 @@ export class CdkSampleAppStack extends cdk.Stack {
       INJECT_WRONG_IDS: props.config.injectWrongIds ? 'true' : 'false',
       WRONG_ID_PROBABILITY: props.config.wrongIdProbability.toString(),
       // Configuration for S3 access errors
-      SIMULATE_S3_ACCESS_ERRORS: props.config.simulateS3AccessErrors ? 'true' : 'false',
+      POPULATE_ACCESS_ERROR: props.config.simulateS3AccessErrors ? 'true' : 'false',
     };
 
     const lambdaConfig = {

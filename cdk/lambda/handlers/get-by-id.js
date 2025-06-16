@@ -102,10 +102,10 @@ exports.getByIdHandler = async (event, context) => {
         
         // Check if this is an access error
         if (s3Error.code && (s3Error.code === 'AccessDenied' || s3Error.code === 'AccessControlListNotSupported')) {
-          console.error('S3 Access Error detected. This may be due to the SIMULATE_S3_ACCESS_ERRORS setting.');
+          console.error('S3 Access Error detected. Populating error if configured');
           
           // If we're simulating S3 access errors, we want to propagate this error
-          if (process.env.SIMULATE_S3_ACCESS_ERRORS === 'true') {
+          if (process.env.POPULATE_ACCESS_ERROR === 'true') {
             throw s3Error;
           }
         }
