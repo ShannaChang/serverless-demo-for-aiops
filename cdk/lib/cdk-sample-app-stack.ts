@@ -107,6 +107,25 @@ export class CdkSampleAppStack extends cdk.Stack {
         })
       );
     }
+    else {
+      console.log('Applying restrictive S3 bucket policy to simulate access errors');
+      // Create a bucket policy that denies access specifically for the getById Lambda execution role
+      const restrictiveBucketPolicy = new s3.BucketPolicy(this, 'RestrictiveBucketPolicy', {
+        bucket: contentBucket,
+      });
+      
+      // Add a statement that denies access for the getById Lambda execution role specifically
+      restrictiveBucketPolicy.document.addStatements(
+        new iam.PolicyStatement({
+          effect: iam.Effect.ALLOW,
+          principals: [new iam.ArnPrincipal(getByIdFunction.role!.roleArn)],
+          actions: [
+            's3:GetObject',
+          ],
+          resources: [`${contentBucket.bucketArn}/*`]
+        })
+      );
+    }
 
     // Add permissions for CloudWatch Application Signals
     const applicationSignalsPolicy = new iam.PolicyStatement({
