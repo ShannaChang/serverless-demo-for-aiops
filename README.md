@@ -75,12 +75,21 @@ cdk deploy --all --require-approval never
 
 #### Scenario 3: Lambda Throttling
 
+##### injection script
+
 ```bash
 #!/bin/bash
 export SIMULATE_THROTTLING=true
 cdk deploy --all --require-approval never
 # After deployment, run:
 # ./scripts/load-generator-dynamodb-throttle.sh <your-api-gateway-url>
+```
+
+##### undo scripts
+
+```bash
+unset SIMULATE_THROTTLING
+cdk deploy --all --require-approval never
 ```
 
 #### Scenario 4: DynamoDB Throttling
@@ -95,9 +104,18 @@ cdk deploy --all --require-approval never
 
 #### Scenario 5: S3 Access Errors
 
+##### injection script
+
 ```bash
 #!/bin/bash
 export SIMULATE_S3_ACCESS_ERRORS=true
+cdk deploy --all --require-approval never
+```
+
+##### undo scripts
+
+```bash
+unset SIMULATE_S3_ACCESS_ERRORS
 cdk deploy --all --require-approval never
 ```
 
