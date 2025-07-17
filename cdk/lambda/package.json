@@ -4,7 +4,7 @@
   "description": "Lambda functions for the CDK sample app",
   "main": "index.js",
   "dependencies": {
-    "aws-sdk": "^2.1502.0",
-    "aws-xray-sdk-core": "^3.5.3"
+    "aws-sdk": "2.1502.0",
+    "aws-xray-sdk-core": "3.5.3"
   }
 }
